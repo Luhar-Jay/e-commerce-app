@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "./Header";
 import ProductList from "./ProductList";
+import { Outlet } from "react-router";
 
 const Home = () => {
   return (
     <div>
-      <Header />
       <ProductList />
+      <Outlet />
     </div>
   );
 };
