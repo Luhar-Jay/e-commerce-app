@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { API_URL } from "../utils/constants";
 import { useParams } from "react-router";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const ViewProduct = () => {
   const [item, setItems] = useState();
 
+  const dispatch = useDispatch();
+
   const { id } = useParams();
+
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
 
   useEffect(() => {
     getFectItems();
@@ -19,23 +27,37 @@ const ViewProduct = () => {
     setItems(json);
   };
 
-  // const { image, description, category, price, title, rating } = item;
-  // const { rate } = rating;
   return (
-    <div className="bg-slate-200 h-screen">
+    <div className="h-screen">
       <div className=" p-4 w-3/6 flex flex-col  mx-auto ">
-        {/* <div>{item && <ProductCard product={item} />}</div> */}
         {item && (
-          <>
-            <div className="flex justify-center">
-              <img className="h-64 w-52 " alt={item.title} src={item.image} />
+          <div className="">
+            <div className="flex justify-center border-b">
+              <img
+                className="h-64 w-52 mb-2"
+                alt={item.title}
+                src={item.image}
+              />
             </div>
-            <h1 className="text-xl font-bold mt-2 ">{item.title}</h1>
-            <p className="text-lg py-2">{item.category}</p>
-            <p className="font-bold p-2">Rs. {item.price}</p>
-            <p className="p-2">⭐ {item.rating.rate}</p>
-            <p className="p-2">{item.description}</p>
-          </>
+            <div className="border p-2 shadow-lg">
+              <h1 className="text-xl font-bold mt-2 ">{item.title}</h1>
+              <p className="text-lg py-2">{item.category}</p>
+              <p className="font-bold ">Rs. {item.price}</p>
+              <p className="py-2">⭐ {item.rating.rate}</p>
+              <button
+                className="bg-black w-16 text-white px-2 rounded-lg py-1"
+                onClick={handleAddItem(item)}
+              >
+                Add+
+              </button>
+              <div className="mt-2 border-gray-600">
+                <p className="text-lg font-bold border-b border-gray-500">
+                  Description
+                </p>
+                <p className="p-2">{item.description}</p>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>

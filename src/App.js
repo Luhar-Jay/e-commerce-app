@@ -5,6 +5,10 @@ import Contact from "./component/Contact";
 import ViewProduct from "./component/ViewProduct";
 import Body from "./component/Body";
 import Home from "./component/Home";
+import Cart from "./component/Cart";
+import Header from "./component/Header";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 
 function App() {
   // const Home = lazy(() => import("./component/Home"));
@@ -22,6 +26,10 @@ function App() {
           path: "view/:id",
           element: <ViewProduct />,
         },
+        {
+          path: "cart",
+          element: <Cart />,
+        },
       ],
     },
 
@@ -36,8 +44,10 @@ function App() {
   ]);
   return (
     <div>
-      {/* <Header /> */}
-      <RouterProvider router={appRouter} />
+      <Provider store={store}>
+        {/* <Header /> */}
+        <RouterProvider router={appRouter} />
+      </Provider>
     </div>
   );
 }

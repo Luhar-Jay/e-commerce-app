@@ -1,10 +1,12 @@
 import React from "react";
 import ProductList from "./ProductList";
 import { Outlet } from "react-router";
+// import ButtonList from "./ButtonList";
 
 const Home = () => {
   return (
-    <div>
+    <div className="bg-slate-100">
+      {/* <ButtonList /> */}
       <ProductList />
       <Outlet />
     </div>

@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { USER_IMG } from "../utils/constants";
 import { Link } from "react-router-dom";
 
-const Header = () => {
-  const [search, setSearch] = useState("");
+const Header = ({ items }) => {
+  const cartItem = useSelector((store) => store.cart.items);
 
   return (
-    <div className="shadow-lg flex flex-row justify-between bg-orange-200 bg-gradient-to-b">
+    <div className="shadow-lg flex flex-row justify-between bg-orange-200 bg-gradient-to-b top-0 z-50 sticky">
       <div className="flex col-span-1 ">
         <Link to="/">
           <img
@@ -16,19 +16,7 @@ const Header = () => {
           />
         </Link>
       </div>
-      <div className="col-span-10 flex items-center px-2">
-        <input
-          className="border border-black rounded-l-lg p-2 w-96"
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search"
-        />
-        {console.log(search)}
-        <button className="bg-green-400 p-2 border border-black rounded-r-lg">
-          Search
-        </button>
-      </div>
+      <div className="col-span-10 flex items-center px-2"></div>
       <div className="col-span-1">
         <ul className="flex text-2xl mt-4 p-4 ">
           <Link to="/">
@@ -43,6 +31,11 @@ const Header = () => {
           <Link to="/contact">
             <li className="px-2 mx-2 hover:bg-red-300 py-2 rounded-lg">
               contact
+            </li>
+          </Link>
+          <Link to="/cart">
+            <li className="px-2 mx-2 hover:bg-red-300 py-2 rounded-lg">
+              Cart ({cartItem.length})
             </li>
           </Link>
 
