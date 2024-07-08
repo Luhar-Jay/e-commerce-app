@@ -33,7 +33,7 @@ const ItemList = ({ items }) => {
                 Add +
               </button>
             </div>
-            <img src={item.image} />
+            <img src={item.image} alt="item" />
           </div>
         </div>
       ))}

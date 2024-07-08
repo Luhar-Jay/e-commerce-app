@@ -3,6 +3,8 @@ import { API_URL } from "../utils/constants";
 import { useParams } from "react-router";
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ViewProduct = () => {
   const [item, setItems] = useState();
@@ -15,7 +17,10 @@ const ViewProduct = () => {
 
   const handleAddItem = (item) => {
     return () => {
-      dispatch(addItem(item));
+      if (item) {
+        dispatch(addItem(item));
+        toast.success(`Item "${item.title}" added to cart!`);
+      }
     };
   };
 
@@ -34,6 +39,12 @@ const ViewProduct = () => {
   return (
     <div className="h-screen">
       <div className=" p-4 w-3/6 flex flex-col  mx-auto ">
+        <ToastContainer
+          className="fixed  right-0 m-4 bg-green-300 text-white rounded px-4 py-2 shadow-md"
+          autoClose={2000}
+          hideProgressBar={true}
+          closeButton={true}
+        />
         {item && (
           <div className="">
             <div className="flex justify-center border-b">

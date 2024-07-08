@@ -6,10 +6,9 @@ import ViewProduct from "./component/ViewProduct";
 import Body from "./component/Body";
 import Home from "./component/Home";
 import Cart from "./component/Cart";
-import Header from "./component/Header";
 import { Provider } from "react-redux";
 import store from "./utils/store";
-import ProductList from "./component/ProductList";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   // const Home = lazy(() => import("./component/Home"));
