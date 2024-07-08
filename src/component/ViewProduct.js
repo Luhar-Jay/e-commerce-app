@@ -7,12 +7,16 @@ import { addItem } from "../utils/cartSlice";
 const ViewProduct = () => {
   const [item, setItems] = useState();
 
+  // const addtoCart = useSelector((store) => store.cart.items);
+
   const dispatch = useDispatch();
 
   const { id } = useParams();
 
   const handleAddItem = (item) => {
-    dispatch(addItem(item));
+    return () => {
+      dispatch(addItem(item));
+    };
   };
 
   useEffect(() => {

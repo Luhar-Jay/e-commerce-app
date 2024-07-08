@@ -9,6 +9,7 @@ import Cart from "./component/Cart";
 import Header from "./component/Header";
 import { Provider } from "react-redux";
 import store from "./utils/store";
+import ProductList from "./component/ProductList";
 
 function App() {
   // const Home = lazy(() => import("./component/Home"));
@@ -22,6 +23,7 @@ function App() {
           path: "/",
           element: <Home />,
         },
+
         {
           path: "view/:id",
           element: <ViewProduct />,

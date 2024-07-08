@@ -12,9 +12,9 @@ const ItemList = ({ items }) => {
   };
   return (
     <div>
-      {items.map((item) => (
+      {items.map((item, index) => (
         <div
-          key={item.id}
+          key={item.id && index}
           className="p-2 m-2 border-b-2 border-gray-400 text-left flex justify-between"
         >
           <div className="w-9/12">

@@ -13,7 +13,7 @@ const ProductList = () => {
 
   useEffect(() => {
     getFetchData();
-  }, [products]);
+  }, []);
 
   const getFetchData = async () => {
     const data = await fetch(API_URL);
