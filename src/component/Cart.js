@@ -2,18 +2,29 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../utils/cartSlice";
 import ItemList from "./ItemList";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
 
-  const handleClearCart = () => {
-    dispatch(clearCart());
+  const handleClearCart = (item) => {
+    if (item) {
+      dispatch(clearCart(item));
+      toast.success(`All items are cleared!`);
+    }
   };
 
   return (
     <div>
       <div className="text-center p-4 m-4">
+        <ToastContainer
+          className="fixed  right-0 m-4 bg-green-300 text-white rounded px-4 py-2 shadow-md"
+          autoClose={2000}
+          hideProgressBar={true}
+          closeButton={true}
+        />
         <h1 className="text-2xl font-bold">Cart</h1>
         <div className="w-6/12 m-auto">
           <button

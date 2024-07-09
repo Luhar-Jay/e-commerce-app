@@ -48,32 +48,33 @@ const ProductList = () => {
   };
 
   return (
-    <div className="  mx-4 p-4 ">
-      <div className="flex justify-center">
+    <div className="mx-4 p-4 md:px-8 md:py-12">
+      <div className="flex justify-center mb-4">
         <button
-          className=" bg-blue-500 p-2 rounded-lg font-medium"
+          className="bg-blue-500 p-2 rounded-lg font-medium w-20 md:w-32"
           onClick={handleTopRatedClick}
         >
           {!isTopRated ? "Show All" : "Top Rated"}
         </button>
         <input
-          className="border border-black rounded-l-lg p-2 w-96 ml-24"
+          onSubmit={(e) => e.preventDefault}
+          className="border border-black rounded-l-lg p-2 w-96 md:w-64 ml-4"
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search"
         />
         <button
-          className="bg-green-400 p-2 border border-black rounded-r-lg"
+          className="bg-green-400 p-2 border border-black rounded-r-lg md:w-32"
           onClick={handleSearch}
         >
           Search
         </button>
       </div>
-      <div className="border-b py-2 border-black  ">
+      <div className="border-b py-2 border-black mb-4">
         <h1 className="text-2xl font-bold">All Products</h1>
       </div>
-      <div className="flex flex-wrap ">
+      <div className="flex flex-wrap justify-center">
         {Array.isArray(filteredProduct) && filteredProduct.length > 0
           ? filteredProduct.map((product) => (
               <Link to={`/view/${product.id}`} key={product.id}>
@@ -86,7 +87,6 @@ const ProductList = () => {
               </Link>
             ))}
       </div>
-      <Electronics />
     </div>
   );
 };

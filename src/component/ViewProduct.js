@@ -9,8 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 const ViewProduct = () => {
   const [item, setItems] = useState();
 
-  // const addtoCart = useSelector((store) => store.cart.items);
-
   const dispatch = useDispatch();
 
   const { id } = useParams();
@@ -38,27 +36,28 @@ const ViewProduct = () => {
 
   return (
     <div className="h-screen">
-      <div className=" p-4 w-3/6 flex flex-col  mx-auto ">
+      <div className="p-4 w-full md:w-3/6 flex flex-col mx-auto">
         <ToastContainer
-          className="fixed  right-0 m-4 bg-green-300 text-white rounded px-4 py-2 shadow-md"
+          className="fixed right-0 m-4 bg-green-300 text-white rounded px-4 py-2 shadow-md"
           autoClose={2000}
           hideProgressBar={true}
           closeButton={true}
         />
         {item && (
-          <div className="">
-            <div className="flex justify-center border-b">
+          <div className="md:flex md:flex-wrap">
+            <div className="md:w-1/2 mb-4 md:mb-0 border bg-gray-100 flex justify-center items-center">
               <img
-                className="h-64 w-52 mb-2"
+                className="h-64 w-full md:w-52 mb-2"
                 alt={item.title}
                 src={item.image}
               />
             </div>
-            <div className="border p-2 shadow-lg">
-              <h1 className="text-xl font-bold mt-2 ">{item.title}</h1>
+            <div className="md:w-1/2 p-2 shadow-lg">
+              <h1 className="text-xl font-bold mt-2">{item.title}</h1>
               <p className="text-lg py-2">{item.category}</p>
-              <p className="font-bold ">Rs. {item.price}</p>
+              <p className="font-bold">Rs. {item.price}</p>
               <p className="py-2">⭐ {item.rating.rate}</p>
+              <p className="py-2">Available for: {item.rating.count}</p>
               <button
                 className="bg-black w-16 text-white px-2 rounded-lg py-1"
                 onClick={handleAddItem(item)}
