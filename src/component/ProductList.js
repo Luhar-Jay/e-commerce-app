@@ -3,17 +3,25 @@ import ProductCard from "./ProductCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { API_URL } from "../utils/constants";
-import Electronics from "./Electronics";
 
 const ProductList = () => {
   const [products, setproducts] = useState([]);
   const [filteredProduct, setFilteredproduct] = useState([]);
   const [isTopRated, setIsTopRated] = useState(true);
   const [search, setSearch] = useState("");
+  const [debounceSearch, setDebounceSearch] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
     getFetchData();
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebounceSearch(search);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [search]);
 
   const getFetchData = async () => {
     const data = await fetch(API_URL);
@@ -39,12 +47,22 @@ const ProductList = () => {
     }
   };
 
-  const handleSearch = () => {
+  const handleSearch = (item) => {
     setFilteredproduct([]);
-    const searchFilter = products.filter((i) =>
-      i.title.toLowerCase().includes(search.toLowerCase())
+    const searchFilter = products.filter(
+      (i) => i.title && i.title.toLowerCase().includes(item.toLowerCase())
     );
     setFilteredproduct(searchFilter);
+  };
+
+  const handleSuggestion = (suggestion) => {
+    setSearch(suggestion.title);
+    setFilteredproduct([suggestion]);
+    setSuggestions([]);
+  };
+
+  const handleSearchClick = () => {
+    handleSearch(search);
   };
 
   return (
@@ -63,10 +81,25 @@ const ProductList = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search"
+          // onBlur={() => setSuggestions()}
+          // onFocus={() => handleSearch(search)}
         />
+        {suggestions.length > 0 && (
+          <ul className="absolute bg-white border w-64 mt-10 ml-5 border-gray-100 rounded-b-lg max-h-48 overflow-y-auto">
+            {suggestions.map((suggestion) => (
+              <li
+                key={suggestion.id}
+                className="p-2 cursor-pointer hover:bg-gray-200"
+                onClick={() => handleSuggestion(suggestion)}
+              >
+                {suggestion.title}
+              </li>
+            ))}
+          </ul>
+        )}
         <button
           className="bg-green-400 p-2 border border-black rounded-r-lg md:w-32"
-          onClick={handleSearch}
+          onClick={handleSearchClick}
         >
           Search
         </button>
