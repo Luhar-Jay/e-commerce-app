@@ -20,7 +20,7 @@ const Cart = () => {
     <div>
       <div className="text-center p-4 m-4">
         <ToastContainer
-          className="fixed  right-0 m-4 bg-green-300 text-white rounded px-4 py-2 shadow-md"
+          className="fixed  right-0 mt-12 m-4 text-white rounded px-4 py-2"
           autoClose={2000}
           hideProgressBar={true}
           closeButton={true}

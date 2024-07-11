@@ -20,13 +20,13 @@ const ProductList = () => {
     const timer = setTimeout(() => {
       setDebounceSearch(search);
     }, 500);
+    console.log(search);
     return () => clearTimeout(timer);
   }, [search]);
 
   const getFetchData = async () => {
     const data = await fetch(API_URL);
     const json = await data.json();
-    console.log(json);
 
     setproducts(json);
   };
@@ -53,6 +53,7 @@ const ProductList = () => {
       (i) => i.title && i.title.toLowerCase().includes(item.toLowerCase())
     );
     setFilteredproduct(searchFilter);
+    setSuggestions(searchFilter.slice(0, 5));
   };
 
   const handleSuggestion = (suggestion) => {
@@ -80,6 +81,7 @@ const ProductList = () => {
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          onKeyUp={() => handleSearch(search)}
           placeholder="Search"
           // onBlur={() => setSuggestions()}
           // onFocus={() => handleSearch(search)}

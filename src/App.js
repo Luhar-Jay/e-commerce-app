@@ -8,7 +8,6 @@ import Home from "./component/Home";
 import Cart from "./component/Cart";
 import { Provider } from "react-redux";
 import store from "./utils/store";
-import { ToastContainer } from "react-toastify";
 
 function App() {
   // const Home = lazy(() => import("./component/Home"));

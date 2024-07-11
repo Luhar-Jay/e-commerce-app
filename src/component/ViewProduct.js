@@ -46,11 +46,16 @@ const ViewProduct = () => {
     }
   };
 
+  const getItemQuantity = (itemId) => {
+    const cartItem = cartItems.find((cartItem) => cartItem.id === itemId);
+    return cartItem ? cartItem.quantity : 0;
+  };
+
   return (
     <div className="h-screen">
       <div className="p-4 w-full md:w-3/6 flex flex-col mx-auto">
         <ToastContainer
-          className="fixed right-0 m-4  text-green-800 rounded px-4 py-2 "
+          className="fixed right-0 m-4 mt-12 rounded px-4 py-2 "
           autoClose={1000}
           hideProgressBar={true}
           closeButton={true}
@@ -80,7 +85,9 @@ const ViewProduct = () => {
                       -
                     </button>
                   </div>
-                  <span className=" py-2 bg-white ">{cartItems.length}</span>
+                  <span className=" py-2 bg-white ">
+                    {getItemQuantity(item.id)}
+                  </span>
                   <div className="w-9 text-center text-black font-bold text-3xl ml-2">
                     <button
                       className=" border-r-black bg-green-500 pb-2 ml-1 px-3 rounded-full  "
