@@ -18,7 +18,7 @@ const Cart = () => {
 
   return (
     <div>
-      <div className="text-center p-4 m-4">
+      <div className="text-center p-4 md:m-4">
         <ToastContainer
           className="fixed  right-0 mt-12 m-4 text-white rounded px-4 py-2"
           autoClose={2000}

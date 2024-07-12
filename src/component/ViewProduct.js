@@ -41,7 +41,7 @@ const ViewProduct = () => {
 
   const handleRemoveItem = () => {
     if (item) {
-      dispatch(removeItems(item.id));
+      dispatch(removeItems(item));
       toast.success(`One item of "${item.title}" removed from cart!`);
     }
   };
@@ -55,7 +55,7 @@ const ViewProduct = () => {
     <div className="h-screen">
       <div className="p-4 w-full md:w-3/6 flex flex-col mx-auto">
         <ToastContainer
-          className="fixed right-0 m-4 mt-12 rounded px-4 py-2 "
+          className="fixed right-0 m-4 md:mt-12 mt-20 rounded px-4 py-2 "
           autoClose={1000}
           hideProgressBar={true}
           closeButton={true}
@@ -64,7 +64,7 @@ const ViewProduct = () => {
           <div className="md:flex md:flex-wrap">
             <div className="md:w-1/2 mb-4 md:mb-0 border bg-gray-100 flex justify-center items-center">
               <img
-                className="h-64 w-full md:w-52 mb-2"
+                className="md:h-64 h-64 w-full md:w-52 mb-2"
                 alt={item.title}
                 src={item.image}
               />
@@ -73,10 +73,9 @@ const ViewProduct = () => {
               <h1 className="text-xl font-bold mt-2">{item.title}</h1>
               <p className="text-lg py-2">{item.category}</p>
               <p className="font-bold">Rs. {item.price}</p>
-              <p className="py-2">⭐ {item.rating.rate}</p>
-              <p className="py-2">Available for: {item.rating.count}</p>
+
               {inCart ? (
-                <div className=" flex items-center justify-center w-32   ">
+                <div className=" flex items-center justify-center w-32 mt-2  ">
                   <div className=" w-11 text-center text-black font-bold text-3xl mr-2">
                     <button
                       className="border-r-black bg-red-500 pb-2 mr-1 px-4 rounded-full"
@@ -106,6 +105,8 @@ const ViewProduct = () => {
                 </button>
               )}
               <div className="mt-2 border-gray-600">
+                <p className="py-2">Available for: {item.rating.count}</p>
+                <p className="py-2">⭐ {item.rating.rate}</p>
                 <p className="text-lg font-bold border-b border-gray-500">
                   Description
                 </p>
