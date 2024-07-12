@@ -113,13 +113,6 @@ const Header = ({ items }) => {
                 Cart ({cartItem.length})
               </li>
             </Link>
-            <li
-              className={`px-2 py-2 rounded-lg ${
-                location.pathname === "/cart" ? "bg-red-500" : ""
-              }`}
-            >
-              Profile
-            </li>
           </ul>
         </div>
       )}
