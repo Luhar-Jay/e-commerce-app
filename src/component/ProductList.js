@@ -193,7 +193,7 @@ const ProductList = () => {
           />
           <div class="absolute inset-y-0 right-0 flex flex-col justify-center text-end items-end p-4 bg-opacity-75">
             <p class="font-sans text-xl text-black mb-2 ">
-              How to choose the right frame?
+              How to choose the right product?
             </p>
             <h1 class="font-serif font-bold text-black text-4xl mb-4 w-96">
               BUY LESS. CHOOSE WELL.
