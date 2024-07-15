@@ -17,7 +17,7 @@ const Header = ({ items }) => {
       <div className="flex col-span-1 ">
         <Link to="/">
           <img
-            className="w-20 h-22 mx-4 px-2 py-2 rounded-full"
+            className="w-12 md:w-20 md:h-22  my-2 mx-4 px-2 py-2 rounded-full"
             alt="logo"
             src="https://png.pngtree.com/element_our/png_detail/20181226/supercar-shop-logo-design-vector-png_285475.jpg"
           />
