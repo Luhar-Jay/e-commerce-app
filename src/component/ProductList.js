@@ -87,7 +87,7 @@ const ProductList = () => {
   ];
 
   return (
-    <div className="  ">
+    <div className=" overflow-x-hidden ">
       {/* <Slide className="w-auto h-auto">
             {fadeImages.map((fadeImage, index) => (
               <div className="each-slide h-auto" key={index}>
@@ -100,7 +100,7 @@ const ProductList = () => {
           </Slide> */}
       <div className="flex justify-center h-full md:flex-row flex-wrap">
         <div className="flex flex-wrap md:flex-nowrap">
-          <div className="w-full md:w-1/2 xl:w-2/3 flex items-center text-center py-12 md:py-60">
+          <div className="w-96 md:w-1/2 flex items-center justify-center text-center py-12 md:py-60">
             <div className="px-5 md:px-10">
               <p className="text-lg md:text-2xl">
                 30% off on our Fantastic Summer
@@ -108,7 +108,7 @@ const ProductList = () => {
               <h1 className="font-bold font-serif text-3xl md:text-4xl p-5">
                 COLLECTIONS!!
               </h1>
-              <p className="text-wrap p-5 mx-64 font-medium font-sans">
+              <p className=" p-5  font-medium font-sans">
                 Enhance the visual impression of your face to multiple levels.
                 Compare our styles on various faces- Quality Promised.
               </p>
@@ -117,7 +117,7 @@ const ProductList = () => {
               </button>
             </div>
           </div>
-          <div className="w-full md:w-1/2 xl:w-1/3">
+          <div className="w-full md:w-1/2 ">
             <img
               className="object-cover h-full w-full"
               alt="img"
@@ -127,17 +127,29 @@ const ProductList = () => {
         </div>
       </div>
       {/* <div className=" mb-4 flex"> */}
-      <div className="py-2 flex flex-wrap md:flex-col  mb-4 p-4 mx-4 mt-10">
+      <div className="py-2 flex flex-row md:flex-col  mb-4 p-4 mx-4 mt-10">
         <div className="md:flex md:flex-wrap justify-center">
+          <button
+            className="bg-blue-500 p-2 px-1 md:ml-12 ml-2 rounded-lg font-medium  w-20 md:w-32 xl:w-40"
+            onClick={handleTopRatedClick}
+          >
+            {!isTopRated ? "Show All" : "Top "}
+          </button>
           <input
             onSubmit={(e) => e.preventDefault}
-            className="border border-black rounded-l-lg p-2 w-full md:w-64 xl:w-80"
+            className="border border-black rounded-l-lg p-2 ml-1  w-32 md:w-64 xl:w-80"
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             onKeyUp={() => handleSearch(search)}
             placeholder="Search"
           />
+          <button
+            className="bg-green-400 p-2 border border-black rounded-r-lg md:w-32 xl:w-40"
+            onClick={handleSearchClick}
+          >
+            Search
+          </button>
 
           {suggestions.length > 0 && (
             <ul className="absolute bg-white border w-full md:w-64 xl:w-80 mt-0 ml-0 md:ml-80 border-gray-100 rounded-b-lg max-h-48 overflow-y-auto">
@@ -152,26 +164,13 @@ const ProductList = () => {
               ))}
             </ul>
           )}
-          <div className="flex flex-wrap md:flex-nowrap">
-            <button
-              className="bg-green-400 p-2 border border-black rounded-r-lg md:w-32 xl:w-40"
-              onClick={handleSearchClick}
-            >
-              Search
-            </button>
-            <button
-              className="bg-blue-500 p-2 px-1 md:ml-12 ml-2 rounded-lg font-medium  w-20 md:w-32 xl:w-40"
-              onClick={handleTopRatedClick}
-            >
-              {!isTopRated ? "Show All" : "Top "}
-            </button>
-          </div>
+          <div className="flex flex-wrap md:flex-nowrap"></div>
         </div>
       </div>
       <div class="flex flex-col md:flex-row m-2 justify-center">
-        <div class="relative w-full md:w-[750px] h-[400px] m-2">
+        <div class="relative w-full md:w-[750px] h-[400px] md:ml-12 mb-2  mr-12">
           <img
-            class="w-full h-full object-cover"
+            class="w-50 h-full object-cover"
             alt="ad-poster"
             src="https://static.zohocdn.com/sites/stock-images/images/zpstock-image-775.jpg"
           />
@@ -185,7 +184,7 @@ const ProductList = () => {
             </button>
           </div>
         </div>
-        <div class="relative w-full md:w-[750px] h-[400px] m-2">
+        <div class="relative  w-full md:w-[750px] h-[400px]  mr-12">
           <img
             class="w-full h-full object-cover"
             alt="ad-poster"
